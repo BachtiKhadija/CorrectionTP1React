@@ -10,7 +10,7 @@ import ProductCard from "./ProductCard.jsx";
 import Produits from './Produits.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Produits/>
+    <Compteur/>
    
   </StrictMode>,
 )
