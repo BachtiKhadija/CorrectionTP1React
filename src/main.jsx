@@ -8,9 +8,10 @@ import Salutation from  './Salutation.jsx';
 import Form from './Form.jsx';
 import ProductCard from "./ProductCard.jsx";
 import Produits from './Produits.jsx';
+import Exercice6 from './Exercice6.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Compteur/>
+    <Exercice6 />
    
   </StrictMode>,
 )
