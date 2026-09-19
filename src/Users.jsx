@@ -15,13 +15,13 @@ const Users=()=>{
     return (
         <div>
     {/*coder en jsx  */}
-    <h3>nombre :{listu[0].username} </h3>
+    <h3>nombre :{listu.length} </h3>
          {
             
-            listu.map((u,pos)=>{
+            listu.map((u,pos)=>
                  <UserCard key={u.id} u={u}/>
 
-            })
+            )
          }
          </div>
        
