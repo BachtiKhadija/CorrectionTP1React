@@ -14,4 +14,4 @@ const Identification = ({nom,age,adresse}) => {
 }
 
 
-export default Identification;
+export default Identification

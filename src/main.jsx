@@ -11,9 +11,11 @@ import ProductCard from "./ProductCard.jsx";
 import Produits from './Produits.jsx';
 import Exercice6 from './Exercice6.jsx';
 import Users from "./Users.jsx";
+import TodoList from './TodoList.jsx';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Users />
+<TodoList/>
    
   </StrictMode>
 )
