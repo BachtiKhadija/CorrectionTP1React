@@ -13,7 +13,7 @@ return(
      <>
       {
         listP.map((item,pos)=>(
-               <ProductCard nom={item.nom} prix={item.prix} categorie={item.categorie} disponible={item.disponible}/>
+               <ProductCard key={pos}  nom={item.nom} prix={item.prix} categorie={item.categorie} disponible={item.disponible}/>
 
         ))
       }
