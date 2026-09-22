@@ -13,10 +13,11 @@ import Exercice6 from './Exercice6.jsx';
 import Users from "./Users.jsx";
 import TodoList from './TodoList.jsx';
 import Books from "./Books.jsx";
+import ValidationForm from './ValidationForm.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<Books/>
+<ValidationForm/>
    
   </StrictMode>
 )
