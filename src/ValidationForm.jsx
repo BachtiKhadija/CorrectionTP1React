@@ -4,7 +4,7 @@ const ValidationForm = () => {
   const villes = ["Agadir", "Rabat", "Casablanca", "Safi"];
 
 
-  const hobbies=["lecture","sport","shopping"];
+  const Listhobbies=["lecture","sport","shopping"];
 
   // Variables d'état
   const [nom, setNom] = useState("");
@@ -14,7 +14,33 @@ const ValidationForm = () => {
   const [ville, setVille] = useState("");
   const [display, setDisplay] = useState(false);
   const [errors, setErrors] = useState({});
+  const [hobbies,setHobbies]=useState([]);
 
+
+  //handel change hobbies
+  const handleHobbyChange = (e) => { 
+    const value = e.target.value; 
+    const checked = e.target.checked; 
+    //const{value,checked}=e.target;
+     console.log(hobbies);
+    if (checked) {
+        let copy=[...hobbies];
+        copy.push(value);
+        setHobbies(copy);
+       // setHobbies([...hobbies, value]);
+       
+        } 
+    else {
+         let newHobbies=hobbies.filter((item) => item !== value);
+        
+        setHobbies(newHobbies); 
+    //setHobbies(hobbies.filter((item) => item !== value));
+    } 
+
+
+
+   
+                                };
   // Fonction de validation
   const validate = () => {
     let res = {};
@@ -48,6 +74,10 @@ const ValidationForm = () => {
       res["email"] = "L'email est obligatoire !!!!";
     } else if (!email.includes("@")) {
       res["email"] = "L'email est invalide !!!!";
+    }
+    //validation des hobbies
+    if (hobbies.length === 0) { 
+        res["hobbies"] = "Selectionner au moins un hobby"; 
     }
 
     return res;
@@ -204,7 +234,21 @@ const ValidationForm = () => {
 
         </div>
 
+        {/*Hobbies */}
+        <div className="mb-3">
+        <p>Hobbies :</p> 
+        {Listhobbies.map((hobby) => ( 
+            <label key={hobby}> 
+                  <input type="checkbox" value={hobby} checked={hobbies.includes(hobby)} 
+                  onChange={handleHobbyChange} /> {hobby} </label> )
+        )}
 
+
+
+         <p className="text-danger">
+            {errors.hobbies}
+          </p>
+</div>
         {/* Bouton */}
         <div className="mb-3">
 
@@ -232,6 +276,7 @@ const ValidationForm = () => {
             <li>Email : {email}</li>
             <li>Gender : {gender}</li>
             <li>Ville : {ville}</li>
+            <li>Hobbies : {hobbies.join()}</li>
           </ul>
 
         </div>
