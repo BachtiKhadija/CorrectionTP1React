@@ -1,21 +1,25 @@
 import { useState } from "react";
 
-const ValidationForm = () => {
+const ValidationFormV2 = () => {
   const villes = ["Agadir", "Rabat", "Casablanca", "Safi"];
  
 
   const Listhobbies=["lecture","sport","shopping"];
 
   // Variables d'état
-  
-  const [nom, setNom] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
-  const [ville, setVille] = useState("");
-  const [display, setDisplay] = useState(false);
+  const [formData,setFormData]=useState({nom:"",prenom:"",email:"",gender:"",ville:"",display:false,hobbies:[]});
   const [errors, setErrors] = useState({});
-  const [hobbies,setHobbies]=useState([]);
+//
+const handelChange=(e)=> {
+   const{name,value}=e.target;
+   /*const name=e.target.name;
+   const value=e.target.value;
+  */
+ setFormData(prev=>({...prev,name:value}));
+  //setFormData(prev=>({...prev,[name]:value}));
+ console.log(formData);
+
+}
 
 
   //handel change hobbies
@@ -53,7 +57,7 @@ const ValidationForm = () => {
   // Fonction de validation
   const validate = () => {
     let res = {};
-
+ console.log(formData);
     // Validation du nom
     if (nom.trim() === "") {
       res["nom"] = "Le nom est obligatoire !!!!";
@@ -96,7 +100,7 @@ const ValidationForm = () => {
   // Soumission du formulaire
   const handelSubmit = (e) => {
     e.preventDefault();
-
+    console.log(formData);
     // On récupère les erreurs dans une variable
     const result = validate();
 
@@ -128,8 +132,8 @@ const ValidationForm = () => {
             id="nom"
             name="nom"
             className="form-control"
-            value={nom}
-            onChange={(e) => setNom(e.target.value)}
+            value={formData.nom}
+            onChange={handelChange}
           />
 
           <span className="text-danger">
@@ -147,8 +151,8 @@ const ValidationForm = () => {
             id="prenom"
             name="prenom"
             className="form-control"
-            value={prenom}
-            onChange={(e) => setPrenom(e.target.value)}
+            value={formData.prenom}
+            onChange={handelChange}
           />
 
           {
@@ -166,8 +170,8 @@ const ValidationForm = () => {
             id="email"
             name="email"
             className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handelChange}
           />
 
           <span className="text-danger">
@@ -189,8 +193,8 @@ const ValidationForm = () => {
             name="gender"
             value="male"
             className="form-check-input"
-            checked={gender === "male"}
-            onChange={(e) => setGender(e.target.value)}
+            checked={formData.gender === "male"}
+            onChange={handelChange}
           />
 
           <label className="form-check-label">Male</label>
@@ -201,8 +205,8 @@ const ValidationForm = () => {
             name="gender"
             value="female"
             className="form-check-input"
-            checked={gender === "female"}
-            onChange={(e) => setGender(e.target.value)}
+            checked={formData.gender === "female"}
+            onChange={handelChange}
           />
 
            <label className="form-check-label">Female</label>
@@ -224,9 +228,9 @@ const ValidationForm = () => {
           <select
             id="ville"
             name="ville"
-            value={ville}
+            value={formData.ville}
             className="form-select"
-            onChange={(e) => setVille(e.target.value)}
+            onChange={handelChange}
           >
 
             <option value="">
@@ -251,8 +255,8 @@ const ValidationForm = () => {
         <div className="mb-3">
         <label className="form-label">Hobbies :</label> 
         {Listhobbies.map((hobby,pos) => ( 
-          <div className="form-check">
-              <input type="checkbox" className="form-check-input"  value={hobby} checked={hobbies.includes(hobby)} 
+          <div className="form-check" key={pos}>
+              <input type="checkbox" className="form-check-input"  value={hobby} checked={formData.hobbies.includes(hobby)} 
                   onChange={handleHobbyChange} /> 
                <label className="form-check-label">{hobby}</label>   
                   </div>
@@ -290,12 +294,12 @@ const ValidationForm = () => {
           <h4>Informations saisies :</h4>
 
           <ul>
-            <li>Nom : {nom}</li>
-            <li>Prénom : {prenom}</li>
-            <li>Email : {email}</li>
-            <li>Gender : {gender}</li>
-            <li>Ville : {ville}</li>
-            <li>Hobbies : {hobbies.join()}</li>
+            <li>Nom : {formData.nom}</li>
+            <li>Prénom : {formData.prenom}</li>
+            <li>Email : {formData.email}</li>
+            <li>Gender : {formData.gender}</li>
+            <li>Ville : {formData.ville}</li>
+            <li>Hobbies : {formData.hobbies.join()}</li>
           </ul>
 
         </div>
@@ -305,4 +309,4 @@ const ValidationForm = () => {
   );
 };
 
-export default ValidationForm;
+export default ValidationFormV2;

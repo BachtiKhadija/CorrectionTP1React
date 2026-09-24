@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Identification  from './Identification.jsx';
-
+import {HandelVar} from "./HandelVar.jsx";
 import Compteur from './Compteur.jsx';
 import Salutation from  './Salutation.jsx';
 import Form from './Form.jsx';
@@ -14,10 +14,10 @@ import Users from "./Users.jsx";
 import TodoList from './TodoList.jsx';
 import Books from "./Books.jsx";
 import ValidationForm from './ValidationForm.jsx';
-
+import ValidationFormV2 from './ValidationForm.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<ValidationForm/>
+<ValidationFormV2/>
    
   </StrictMode>
 )
